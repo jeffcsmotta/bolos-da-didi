@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Bolos da Didi • Bolos Caseiros Artesanais & Afetivos em Viamão</title>
+  <meta name="description" content="Bolos da Didi — Bolos caseiros tradicionais, bolos vulcão farto de brigadeiro, bolos de pote e encomendas em Viamão/RS. Peça direto no WhatsApp!">
+  <meta name="keywords" content="Bolos da Didi, bolos caseiros Viamão, bolo vulcão, confeitaria Viamão, bolo artesanal Santa Isabel, bolo de pote">
+
+  <!-- Canonical & Social Meta -->
+  <link rel="canonical" href="https://jeffcsmotta.github.io/bolos-da-didi/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Bolos da Didi • Bolos Caseiros Artesanais em Viamão">
+  <meta property="og:description" content="Receitas de família 100% caseiras, bolos vulcão, potes artesanais e fatias da casa. Peça direto no WhatsApp!">
+  <meta property="og:image" content="assets/bolo_vulcao_chocolate.jpg">
+  <meta property="og:locale" content="pt_BR">
+
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="style.css?v=20261009-v2">
+</head>
+<body class="theme-onirafly">
+
+  <!-- ==========================================================================
+       HEADER PRINCIPAL — ULTRA-DESPOLUÍDO (APENAS MARCA & PEDIDO)
+       Top announcement bar removida; botão proposta removido
+       ========================================================================== -->
+  <header class="header-main" id="header">
+    <div class="container header-container">
+      <!-- Lado Esquerdo: Logo da Marca -->
+      <a href="index.html" class="brand-link" aria-label="Bolos da Didi Página Inicial">
+        <img src="assets/logo-white.svg" alt="Bolos da Didi Logo Oficial" class="brand-logo-img">
+      </a>
+
+      <!-- Lado Direito: Apenas Lixeira Outline e Botão Meu Pedido -->
+      <div class="header-actions">
+        <!-- Botão Lixeira Outline (Visível quando há itens no carrinho) -->
+        <button type="button" class="btn-header-trash" id="cart-clear-header" onclick="window.clearCart()" title="Limpar Pedido" aria-label="Limpar Pedido" style="display:none;">
+          <i data-lucide="trash-2" style="width:16px;height:16px;"></i>
+        </button>
+
+        <!-- Botão Carrinho ("Meu Pedido" Emboss) -->
+        <button type="button" class="btn-cart-nav cart-toggle-btn" id="cart-toggle" onclick="window.openCart()" aria-label="Abrir Pedido">
+          <i data-lucide="shopping-bag" style="width:17px;height:17px;"></i>
+          <span class="cart-btn-label">Meu Pedido</span>
+          <span class="cart-total-header" id="cart-total-header" style="display:none;">R$ 0,00</span>
+          <span class="cart-count-badge cart-count" id="cart-count" style="display:none;">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       BARRA DE BUSCA COM BADGES OPERACIONAIS LOGO ACIMA
+       Endereço e status integrados diretamente no fluxo do cardápio
+       ========================================================================== -->
+  <section class="catalog-filters-section">
+    <div class="container">
+      <!-- Badges Operacionais Acima da Busca -->
+      <div class="search-top-badges">
+        <div class="status-badge-inline" id="status-badge">
+          <span class="status-dot-pulse"></span>
+          <span>Aberto Hoje • 09h às 18h</span>
+        </div>
+        <div class="address-badge-inline">
+          <i data-lucide="map-pin" style="width:13px;height:13px;color:#D97706;"></i>
+          <span>Av. Liberdade, 2077 — Santa Isabel, Viamão/RS</span>
+        </div>
+      </div>
+
+      <!-- Input de Busca Rápida -->
+      <div class="search-input-wrap">
+        <i data-lucide="search" class="search-icon"></i>
+        <input type="text" id="catalog-search-input" class="search-input-field" placeholder="Buscar por bolo vulcão, cenoura, pote, laranja..." oninput="window.handleSearch(this.value)">
+        <button type="button" class="btn-clear-search" id="btn-clear-search" onclick="window.clearSearch()" style="display:none;" aria-label="Limpar busca">
+          <i data-lucide="x" style="width:16px;height:16px;"></i>
+        </button>
+      </div>
+
+      <!-- Carrossel Horizontal Touch de Categorias -->
+      <nav class="categories-scroll-wrapper" aria-label="Categorias do Cardápio">
+        <div class="categories-scroll-pills">
+          <button type="button" class="cat-pill active" data-category="all" onclick="window.filterCategory('all', this)">
+            <i data-lucide="sparkles" style="width:15px;height:15px;"></i>
+            <span>Todos os Bolos</span>
+          </button>
+          <button type="button" class="cat-pill" data-category="destaques" onclick="window.filterCategory('destaques', this)">
+            <i data-lucide="award" style="width:15px;height:15px;"></i>
+            <span>⭐ Mais Vendidos</span>
+          </button>
+          <button type="button" class="cat-pill" data-category="vulcao" onclick="window.filterCategory('vulcao', this)">
+            <i data-lucide="flame" style="width:15px;height:15px;"></i>
+            <span>Bolos Vulcão &amp; Piscininha</span>
+          </button>
+          <button type="button" class="cat-pill" data-category="caseiros" onclick="window.filterCategory('caseiros', this)">
+            <i data-lucide="cake" style="width:15px;height:15px;"></i>
+            <span>Bolos Caseiros Tradicionais</span>
+          </button>
+          <button type="button" class="cat-pill" data-category="potes" onclick="window.filterCategory('potes', this)">
+            <i data-lucide="cup-soda" style="width:15px;height:15px;"></i>
+            <span>Bolos de Pote &amp; Sobremesas</span>
+          </button>
+          <button type="button" class="cat-pill" data-category="encomendas" onclick="window.filterCategory('encomendas', this)">
+            <i data-lucide="gift" style="width:15px;height:15px;"></i>
+            <span>Bolos Festivos &amp; Encomendas</span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       CARDÁPIO & VITRINE — 1ª DOBRA IMEDIATA (ZERO HERO INSTITUCIONAL)
+       ========================================================================== -->
+  <main class="catalog-section" id="cardapio">
+    <div class="container">
+      <!-- Conceito da Vitrine Compacto -->
+      <div class="catalog-header-bar">
+        <div>
+          <h1 class="catalog-title" id="current-category-name">Vitrine de Bolos Artesanais</h1>
+          <p class="catalog-subtitle" id="current-category-desc">Receitas caseiras feitas na hora pela Didi, sem conservantes e com ingredientes de verdade.</p>
+        </div>
+        <span class="catalog-items-count" id="catalog-count-badge">12 opções disponíveis</span>
+      </div>
+
+      <!-- Grid de Produtos Responsivo (Curadoria 1:1) -->
+      <div class="products-grid" id="product-grid">
+        <!-- Renderizado dinamicamente via app.js -->
+      </div>
+
+      <!-- ======================================================================
+           BANNER: SUA MELHOR OFERTA AQUI (FOTO FOODPORN AMPLIADA & REALISTA)
+           ====================================================================== -->
+      <div class="upsell-box" id="upsell-box">
+        <div class="upsell-media-hero">
+          <img src="assets/bolo_pote_oferta.jpg" alt="Bolo de Pote Brigadeiro Artesanal da Didi" class="upsell-img-large">
+          <span class="upsell-float-badge">Forrada de Brigadeiro</span>
+        </div>
+        <div class="upsell-body-hero">
+          <span class="upsell-tag-hero">⚡ SUA MELHOR OFERTA AQUI</span>
+          <h3 class="upsell-heading-hero">Que tal um Bolo de Pote fresquinho para acompanhar?</h3>
+          <p class="upsell-desc-hero">
+            Camadas generosas de bolo fofinho e brigadeiro artesanal puxado na panela. Pote individual (250ml) por apenas <strong class="upsell-price-val">R$ 15,00</strong>.
+          </p>
+          <div class="upsell-action-row">
+            <button type="button" class="btn-upsell-emboss" onclick="window.addToCart('pote-brigadeiro')">
+              <i data-lucide="plus-circle" style="width:18px;height:18px;"></i>
+              <span>+ Adicionar ao Pedido por R$ 15,00</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==========================================================================
+       PROVA SOCIAL & DIFERENCIAIS DA CASA (APÓS O CARDÁPIO)
+       ========================================================================== -->
+  <section class="trust-section">
+    <div class="container">
+      <div class="trust-grid">
+        <div class="trust-card">
+          <div class="trust-icon-box">
+            <i data-lucide="heart" style="width:24px;height:24px;color:#D97706;"></i>
+          </div>
+          <h3 class="trust-card-title">100% Caseiro &amp; Afetivo</h3>
+          <p class="trust-card-desc">Sem misturas prontas ou conservantes químicos. Cada bolo tem gosto de infância e carinho de mãe.</p>
+        </div>
+        <div class="trust-card">
+          <div class="trust-icon-box">
+            <i data-lucide="clock" style="width:24px;height:24px;color:#D97706;"></i>
+          </div>
+          <h3 class="trust-card-title">Fornadas do Dia</h3>
+          <p class="trust-card-desc">Bolos assados diariamente para garantir a massa macia e a cobertura fumegante que derrete na boca.</p>
+        </div>
+        <div class="trust-card">
+          <div class="trust-icon-box">
+            <i data-lucide="shield-check" style="width:24px;height:24px;color:#10B981;"></i>
+          </div>
+          <h3 class="trust-card-title">Nota 4.9★ no Google</h3>
+          <p class="trust-card-desc">Mais de 45 avaliações públicas apaixonadas de famílias e clientes fiéis em Viamão e região.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       RODAPÉ COMPLETO — TELEFONE, GOOGLE E INSTAGRAM CONCENTRADOS AQUI
+       ========================================================================== -->
+  <footer class="footer-main">
+    <div class="container footer-container">
+      <!-- Coluna 1: Marca & Endereço -->
+      <div class="footer-col footer-left">
+        <img src="assets/logo-white.svg" alt="Bolos da Didi" class="footer-logo">
+        <p class="footer-about">Bolaria artesanal de Viamão focada em receitas tradicionais de família, bolos vulcão de colher e confeitaria afetiva.</p>
+        <p class="footer-address">
+          <i data-lucide="map-pin" style="width:15px;height:15px;display:inline-block;vertical-align:middle;margin-right:5px;color:#FCD34D;"></i>
+          <strong>Av. Liberdade, 2077 — Santa Isabel, Viamão/RS</strong> • CEP 94480-500
+        </p>
+      </div>
+
+      <!-- Coluna 2: Canais de Contato & Redes Sociais -->
+      <div class="footer-col">
+        <h4 class="footer-col-title">Contatos &amp; Redes</h4>
+        <ul class="footer-links">
+          <li>
+            <a href="https://wa.me/555197946693" target="_blank" rel="noopener noreferrer" class="footer-link-item">
+              <i data-lucide="phone" style="width:16px;height:16px;color:#10B981;"></i>
+              <span><strong>WhatsApp Pedidos:</strong> (51) 99794-6693</span>
+            </a>
+          </li>
+          <li>
+            <a href="tel:5134358605" class="footer-link-item">
+              <i data-lucide="phone-call" style="width:16px;height:16px;color:#FCD34D;"></i>
+              <span><strong>Telefone Fixo:</strong> (51) 3435-8605</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/bolos_da_didi" target="_blank" rel="noopener noreferrer" class="footer-link-item">
+              <i data-lucide="instagram" style="width:16px;height:16px;color:#F472B6;"></i>
+              <span><strong>Instagram:</strong> @bolos_da_didi</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Coluna 3: Avaliações & Horários -->
+      <div class="footer-col">
+        <h4 class="footer-col-title">Avaliações &amp; Horário</h4>
+        <div class="footer-google-box">
+          <div class="footer-stars-row">
+            <i data-lucide="star" style="width:16px;height:16px;fill:#F59E0B;color:#F59E0B;"></i>
+            <i data-lucide="star" style="width:16px;height:16px;fill:#F59E0B;color:#F59E0B;"></i>
+            <i data-lucide="star" style="width:16px;height:16px;fill:#F59E0B;color:#F59E0B;"></i>
+            <i data-lucide="star" style="width:16px;height:16px;fill:#F59E0B;color:#F59E0B;"></i>
+            <i data-lucide="star" style="width:16px;height:16px;fill:#F59E0B;color:#F59E0B;"></i>
+            <strong style="color:#FFFFFF;margin-left:4px;">4.9★ no Google</strong>
+          </div>
+          <span class="footer-reviews-sub">Baseado em 45 avaliações públicas recomendando a casa</span>
+        </div>
+        <p class="footer-hours">
+          <i data-lucide="clock" style="width:14px;height:14px;display:inline-block;vertical-align:middle;margin-right:4px;color:#10B981;"></i>
+          Segunda a Sábado: <strong>09h às 18h</strong> (Domingo fechado)
+        </p>
+        <div class="footer-credits">
+          <span>Canal oficial direto desenvolvido com tecnologia <strong>Onira.fly</strong></span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       CARRINHO DRAWER (Rolagem Única Contínua • Padrão Ioshi)
+       Fundo Bege Claro (#FAF6F0) + Containers Escuros + Botões Emboss
+       Itens: FUNDO SEMPRE BRANCO (#FFFFFF)
+       Taxa combinada pelo atendente
+       ========================================================================== -->
+  <div class="cart-drawer-overlay" id="cart-overlay" onclick="window.closeCart()"></div>
+  <aside class="cart-drawer" id="cart-drawer" aria-label="Carrinho de Compras">
+    <div class="cart-header">
+      <button type="button" class="btn-continue-shopping" onclick="window.closeCart()" aria-label="Continuar escolhendo">
+        <i data-lucide="arrow-left"></i> Continuar escolhendo
+      </button>
+      <div class="cart-header-right">
+        <span class="cart-header-title">Meu Pedido Didi</span>
+        <button type="button" class="cart-trash-btn" id="cart-clear-drawer" onclick="window.clearCart()" title="Limpar pedido" aria-label="Limpar pedido">
+          <i data-lucide="trash-2"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="cart-body">
+      <!-- Alternador Tele-entrega | Balcão -->
+      <div class="fulfillment-toggle">
+        <button type="button" class="f-btn active" id="f-delivery" onclick="window.setFulfillment('delivery')">
+          <i data-lucide="bike" style="width:15px; height:15px;"></i> Tele-entrega
+        </button>
+        <button type="button" class="f-btn" id="f-takeout" onclick="window.setFulfillment('takeout')">
+          <i data-lucide="store" style="width:15px; height:15px;"></i> Balcão
+        </button>
+      </div>
+
+      <!-- Dados do Cliente (Opcionais) -->
+      <div class="form-group">
+        <label class="form-label" for="customer-name">Nome (Opcional)</label>
+        <input type="text" id="customer-name" class="form-input" placeholder="Ex: Maria da Silva">
+      </div>
+
+      <div class="form-group" id="address-group">
+        <label class="form-label" for="customer-address">Endereço (Opcional)</label>
+        <input type="text" id="customer-address" class="form-input" placeholder="Rua, número, complemento e bairro">
+      </div>
+
+      <!-- Lista de Produtos -->
+      <div id="cart-items-container">
+        <!-- Injetado via JS -->
+      </div>
+
+      <!-- Forma de Pagamento (3 botões limpos, sem complicação) -->
+      <div class="form-group" style="margin-top: 14px;">
+        <label class="form-label">Forma de Pagamento</label>
+        <div class="payment-grid">
+          <button type="button" class="pay-btn active" id="pay-pix" onclick="window.setPayment('Pix')">Pix</button>
+          <button type="button" class="pay-btn" id="pay-cartao" onclick="window.setPayment('Cartão')">Cartão</button>
+          <button type="button" class="pay-btn" id="pay-dinheiro" onclick="window.setPayment('Dinheiro')">Dinheiro</button>
+        </div>
+      </div>
+
+      <!-- Resumo e Totais -->
+      <div class="cart-summary" id="cart-summary-box">
+        <div class="summary-row">
+          <span>Subtotal:</span>
+          <span id="summary-subtotal">R$ 0,00</span>
+        </div>
+        <div class="summary-row">
+          <span>Taxa de Entrega:</span>
+          <span>A combinar no WhatsApp</span>
+        </div>
+        <div class="summary-row total">
+          <span>Total Estimado:</span>
+          <span class="val price-green" id="summary-total">R$ 0,00</span>
+        </div>
+      </div>
+
+      <!-- Botão WhatsApp Direto Sem Alert -->
+      <button type="button" class="btn-checkout" id="btn-checkout" onclick="window.checkoutWhatsApp()">
+        <i data-lucide="send"></i> Enviar Pedido no WhatsApp
+      </button>
+    </div>
+  </aside>
+
+  <!-- FLOATING ONIRA PROPOSAL WIDGET -->
+  <div class="onira-cta" id="onira-cta">
+    <a class="onira-cta-link" href="proposta.html" rel="nofollow" title="Saiba como funciona meu trabalho">
+      <img src="assets/jeff-avatar.webp" alt="Jefferson Motta, Onira Labs" class="onira-cta-avatar" width="40" height="40">
+      <span class="onira-cta-text">
+        <strong>Ver Proposta Comercial</strong>
+        <small>0% comissão • Onira.fly</small>
+      </span>
+      <i data-lucide="chevron-right" style="width:16px;height:16px;color:#F59E0B;"></i>
+    </a>
+  </div>
+
+  <!-- BARRA FLUTUANTE MOBILE INTELIGENTE (#cart-floating-bar) -->
+  <div class="cart-floating-mobile-bar" id="cart-floating-bar" onclick="window.openCart()">
+    <div class="floating-left">
+      <div class="floating-icon-wrap">
+        <i data-lucide="shopping-bag" style="width:18px;height:18px;"></i>
+        <span class="floating-count-badge" id="float-badge-count">0</span>
+      </div>
+      <div class="floating-text-box">
+        <span class="floating-items-text" id="float-items-text">0 itens</span>
+        <span class="floating-total-text price-green" id="float-total-text">R$ 0,00</span>
+      </div>
+    </div>
+    <div class="floating-right">
+      <span>Ver Pedido</span>
+      <i data-lucide="chevron-right" style="width:16px;height:16px;"></i>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-notification" id="toast-notification"></div>
+
+  <script src="app.js?v=20261009-v2"></script>
+  <script>
+    if (window.lucide) {
+      lucide.createIcons();
+    }
+  </script>
+</body>
+</html>

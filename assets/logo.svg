@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 84" fill="none">
+  <defs>
+    <linearGradient id="warmGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D97706"/>
+      <stop offset="50%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#B45309"/>
+    </linearGradient>
+    <linearGradient id="caramelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#78350F"/>
+      <stop offset="100%" stop-color="#451A03"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Emblem Badge -->
+  <g transform="translate(8, 6)">
+    <rect x="0" y="0" width="72" height="72" rx="20" fill="#FEF3C7" stroke="url(#warmGold)" stroke-width="2"/>
+    <circle cx="36" cy="36" r="28" stroke="#D97706" stroke-width="1" stroke-dasharray="3 2" opacity="0.4"/>
+    <!-- Cake icon / initial -->
+    <path d="M24 48 C24 45, 48 45, 48 48 L48 52 C48 54, 24 54, 24 52 Z" fill="#D97706"/>
+    <path d="M26 42 C26 39, 46 39, 46 42 L46 46 C46 47, 26 47, 26 46 Z" fill="#F59E0B"/>
+    <path d="M30 35 C30 33, 42 33, 42 35 L42 39 C42 40, 30 40, 30 39 Z" fill="#D97706"/>
+    <circle cx="36" cy="27" r="3" fill="#DC2626"/>
+    <text x="36" y="22" font-family="'Outfit', sans-serif" font-size="10" font-weight="800" fill="#B45309" text-anchor="middle">★</text>
+  </g>
+  
+  <!-- Brand Typography -->
+  <g transform="translate(94, 12)">
+    <text x="0" y="30" font-family="'Outfit', 'Plus Jakarta Sans', sans-serif" font-size="28" font-weight="900" fill="#451A03" letter-spacing="-0.5">Bolos da Didi</text>
+    <text x="1" y="49" font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="700" fill="#D97706" letter-spacing="2.5" text-transform="uppercase">BOLOS CASEIROS &amp; CONFEITARIA AFETIVA</text>
+    <text x="1" y="64" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="600" fill="#78350F" letter-spacing="1.2">VIAMÃO • SANTA ISABEL • 100% ARTESANAL</text>
+  </g>
+</svg>
