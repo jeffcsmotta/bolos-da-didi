@@ -878,24 +878,27 @@ body {
   box-shadow: -14px 0 50px rgba(0, 0, 0, 0.45); 
   will-change: transform;
 }
-.cart-drawer.open { transform: translateX(0); }
+.cart-drawer.open { 
+  transform: translateX(0); 
+}
 
-/* Cabeçalho do Carrinho (Padrão Ioshi: Continuar escolhendo + Título + Lixeira) */
+/* Cabeçalho do Carrinho: Leve, Elegante e Acolhedor */
 .cart-header { 
   display: flex; 
   align-items: center; 
   justify-content: space-between; 
   padding: 14px 18px; 
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08); 
-  background: #1C130E; /* Container escuro elegante */
+  border-bottom: 1px solid #EADBCC; 
+  background: #FFFFFF; 
   flex-shrink: 0; 
   gap: 12px; 
+  box-shadow: 0 1px 4px rgba(70, 40, 20, 0.04);
 }
 .btn-continue-shopping {
-  background: #2E2018;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-bottom: 2px solid #140E0A;
-  color: #FFFFFF;
+  background: #F5EFEB;
+  border: 1px solid #DFD5C6;
+  border-bottom: 2px solid #CEC0AE;
+  color: #4A3525;
   font-family: var(--font-heading);
   font-size: 0.82rem;
   font-weight: 700;
@@ -905,13 +908,13 @@ body {
   gap: 8px;
   padding: 8px 16px;
   border-radius: 20px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
   transition: all 0.2s ease;
 }
-.btn-continue-shopping i { width: 15px; height: 15px; transition: transform 0.2s ease; }
+.btn-continue-shopping i { width: 15px; height: 15px; color: #D97706; transition: transform 0.2s ease; }
 .btn-continue-shopping:hover { 
-  background: #3D2B20; 
-  color: #FFFFFF;
+  background: #EDE4D8; 
+  color: #2D1E16;
   transform: translateX(-2px); 
 }
 .btn-continue-shopping:hover i { transform: translateX(-3px); }
@@ -922,17 +925,17 @@ body {
   gap: 10px;
 }
 .cart-header-title { 
-  color: #FFFFFF !important; 
+  color: #382519 !important; 
   font-size: 0.95rem; 
   font-weight: 800; 
   font-family: var(--font-heading); 
   letter-spacing: 0.3px; 
 }
 .cart-trash-btn {
-  background: #2E2018;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-bottom: 2px solid #140E0A;
-  color: #FFFFFF;
+  background: #F5EFEB;
+  border: 1px solid #DFD5C6;
+  border-bottom: 2px solid #CEC0AE;
+  color: #786558;
   cursor: pointer;
   width: 32px;
   height: 32px;
@@ -940,12 +943,13 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
   transition: all 0.2s ease;
 }
 .cart-trash-btn i { width: 15px; height: 15px; }
 .cart-trash-btn:hover { 
   background: #DC2626; 
+  border-color: #DC2626;
   color: #FFFFFF; 
   transform: scale(1.05);
 }
@@ -959,32 +963,32 @@ body {
 }
 .cart-body::-webkit-scrollbar { width: 6px; }
 .cart-body::-webkit-scrollbar-track { background: transparent; }
-.cart-body::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.25); border-radius: 10px; }
-.cart-body::-webkit-scrollbar-thumb:hover { background: rgba(0, 0, 0, 0.4); }
+.cart-body::-webkit-scrollbar-thumb { background: rgba(120, 80, 50, 0.2); border-radius: 10px; }
+.cart-body::-webkit-scrollbar-thumb:hover { background: rgba(120, 80, 50, 0.35); }
 
-.cart-empty { text-align: center; padding: 56px 20px; color: #1C130E; }
+.cart-empty { text-align: center; padding: 56px 20px; color: #4A3525; }
 .cart-empty i { width: 48px; height: 48px; margin-bottom: 12px; color: #D97706; }
-.cart-empty p, .cart-empty-title { font-weight: 800; margin-bottom: 4px; color: #1C130E !important; font-size: 1.05rem; }
-.cart-empty span, .cart-empty-desc { font-size: 0.86rem; color: #64748B !important; font-weight: 600; }
+.cart-empty p, .cart-empty-title { font-weight: 800; margin-bottom: 4px; color: #382519 !important; font-size: 1.05rem; }
+.cart-empty span, .cart-empty-desc { font-size: 0.86rem; color: #786558 !important; font-weight: 500; }
 
-/* Alternador Tele-entrega | Balcão (Padrão Ioshi) */
+/* Alternador Tele-entrega | Balcão (Leve, Arredondado & Tátil) */
 .fulfillment-toggle { 
   display: grid; 
   grid-template-columns: 1fr 1fr; 
-  gap: 8px; 
+  gap: 6px; 
   margin-bottom: 16px; 
-  background: #1C130E; 
-  padding: 5px; 
+  background: #EFE8DC; 
+  padding: 4px; 
   border-radius: 28px; 
-  border: 1px solid rgba(0, 0, 0, 0.2); 
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #DDD3C3; 
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 .f-btn { 
-  padding: 10px 14px; 
+  padding: 9px 14px; 
   border-radius: 22px; 
-  border: none; 
+  border: 1px solid transparent; 
   background: transparent; 
-  color: #D1D5DB; 
+  color: #6E594B; 
   font-family: var(--font-heading); 
   font-weight: 700; 
   font-size: 0.84rem; 
@@ -994,53 +998,52 @@ body {
   justify-content: center; 
   gap: 8px; 
   letter-spacing: 0.2px; 
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.f-btn i { color: #D1D5DB; stroke: #D1D5DB; transition: stroke 0.2s ease; }
+.f-btn i { color: #8A7363; stroke: #8A7363; transition: stroke 0.2s ease; }
 .f-btn:hover:not(.active) {
-  background: rgba(255, 255, 255, 0.08);
-  color: #FFFFFF;
+  color: #382519;
 }
 .f-btn.active { 
   background: #FFFFFF !important; 
-  border-color: #FFFFFF !important; 
-  color: #1C130E !important; 
+  border-color: #DFD5C6 !important; 
+  color: #382519 !important; 
   font-weight: 800; 
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 10px rgba(70, 40, 20, 0.10);
 }
-.f-btn.active i { color: #1C130E !important; stroke: #1C130E !important; }
+.f-btn.active i { color: #D97706 !important; stroke: #D97706 !important; }
 
-/* Form Group & Labels de Alto Contraste */
+/* Form Group & Labels de Alto Contraste & Leves */
 .cart-drawer .form-group { margin-bottom: 14px; }
 .cart-drawer .form-label { 
   display: block; 
-  font-size: 0.76rem; 
+  font-size: 0.74rem; 
   font-weight: 800; 
-  color: #1C130E !important; 
+  color: #6E594B !important; 
   margin-bottom: 6px; 
   text-transform: uppercase; 
-  letter-spacing: 0.5px; 
+  letter-spacing: 0.6px; 
 }
 .cart-drawer .form-input { 
   width: 100%; 
   padding: 11px 14px; 
-  background: #1C130E; 
-  border: 1.5px solid rgba(0, 0, 0, 0.25); 
+  background: #FFFFFF; 
+  border: 1.5px solid #DDD3C3; 
   border-radius: 14px; 
-  color: #FFFFFF; 
+  color: #382519; 
   font-family: var(--font-body); 
-  font-size: 0.86rem; 
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.35);
+  font-size: 0.88rem; 
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
   transition: border-color 0.2s, box-shadow 0.2s; 
 }
 .cart-drawer .form-input::placeholder {
-  color: #9CA3AF;
+  color: #A39385;
 }
 .cart-drawer .form-input:focus { 
   outline: none; 
   border-color: #D97706; 
-  background: #140E0A;
-  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.25); 
+  background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.15); 
 }
 
 /* LISTA DE ITENS DO CARRINHO — REGRA: FUNDO SEMPRE BRANCO (#FFFFFF) */
@@ -1051,11 +1054,11 @@ body {
   margin: 16px 0 20px 0; 
 }
 .cart-item-card { 
-  background: #FFFFFF !important; /* REGRA ESTRETA: FUNDO SEMPRE BRANCO */
+  background: #FFFFFF !important; /* REGRA ESTRITA: FUNDO SEMPRE BRANCO */
   border-radius: 16px; 
   padding: 14px; 
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08); 
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 14px rgba(70, 40, 20, 0.05); 
+  border: 1px solid #EADBCC;
   border-left: 4px solid #D97706; 
   display: flex; 
   flex-direction: column; 
@@ -1074,7 +1077,7 @@ body {
   object-fit: cover; 
   flex-shrink: 0; 
   background: #FAF6F0; 
-  border: 1px solid #E2E8F0;
+  border: 1px solid #EADBCC;
 }
 .cart-item-details { 
   flex: 1; 
@@ -1090,7 +1093,7 @@ body {
   font-family: var(--font-heading); 
   font-weight: 700; 
   font-size: 0.90rem; 
-  color: #1C130E !important; 
+  color: #382519 !important; 
   line-height: 1.25; 
   margin: 0; 
   white-space: nowrap; 
@@ -1106,7 +1109,7 @@ body {
 }
 .cart-item-desc { 
   font-size: 0.74rem; 
-  color: #64748B; 
+  color: #786558; 
   line-height: 1.35; 
   margin: 2px 0 6px 0; 
   white-space: nowrap; 
@@ -1122,18 +1125,19 @@ body {
 .cart-qty-control { 
   display: inline-flex; 
   align-items: center; 
-  background: #F1F5F9; 
+  background: #F8F4EC; 
   border-radius: 20px; 
   padding: 3px 5px; 
-  border: 1px solid #E2E8F0; 
+  border: 1px solid #E5DBCB; 
   gap: 3px;
 }
 .cart-qty-btn { 
   width: 24px; 
   height: 24px; 
-  background: #1C130E; 
-  border: none; 
-  color: #FFFFFF; 
+  background: #FFFFFF; 
+  border: 1px solid #DFD5C6; 
+  border-bottom: 2px solid #CEC0AE;
+  color: #4A3525; 
   font-size: 0.85rem; 
   font-weight: 800; 
   cursor: pointer; 
@@ -1145,6 +1149,7 @@ body {
 }
 .cart-qty-btn:hover { 
   background: #D97706; 
+  border-color: #D97706;
   color: #FFFFFF; 
   transform: scale(1.08);
 }
@@ -1153,11 +1158,11 @@ body {
   text-align: center; 
   font-size: 0.82rem; 
   font-weight: 800; 
-  color: #0F172A; 
+  color: #382519; 
 }
 .cart-item-unit-tag { 
   font-size: 0.72rem; 
-  color: #64748B; 
+  color: #786558; 
   font-weight: 600; 
 }
 .cart-item-notes-wrap { 
@@ -1165,26 +1170,26 @@ body {
 }
 .cart-item-notes { 
   width: 100%; 
-  background: #F8FAFC !important; 
-  border: 1px solid #E2E8F0; 
+  background: #FAF7F2 !important; 
+  border: 1px solid #E5DBCB; 
   border-radius: 10px; 
   padding: 8px 12px; 
-  color: #1C130E !important; 
+  color: #382519 !important; 
   font-size: 0.76rem; 
   font-family: var(--font-body); 
   transition: all 0.2s ease; 
 }
 .cart-item-notes::placeholder {
-  color: #94A3B8;
+  color: #A39385;
 }
 .cart-item-notes:focus { 
   outline: none; 
   border-color: #D97706; 
   background: #FFFFFF !important; 
-  box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.2); 
+  box-shadow: 0 0 0 2px rgba(217, 119, 6, 0.15); 
 }
 
-/* Forma de Pagamento (Padrão Ioshi: 3 Botões Limpos, Preenchidos & Emboss) */
+/* Forma de Pagamento (Limpa, Confortável & Emboss) */
 .payment-grid { 
   display: grid; 
   grid-template-columns: repeat(3, 1fr); 
@@ -1193,37 +1198,39 @@ body {
 .pay-btn { 
   padding: 10px 12px; 
   border-radius: 20px; 
-  border: 1px solid rgba(255, 255, 255, 0.1); 
-  border-bottom: 2px solid #0D0A08;
-  background: #1C130E; 
-  color: #FFFFFF; 
+  border: 1.5px solid #DDD3C3; 
+  border-bottom: 2px solid #CEC0AE;
+  background: #FFFFFF; 
+  color: #4A3525; 
   font-family: var(--font-heading); 
   font-weight: 700; 
   font-size: 0.82rem; 
   cursor: pointer; 
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); 
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1); 
 }
 .pay-btn:hover:not(.active) {
-  background: #2E2018;
-  color: #FFFFFF;
+  background: #F8F4EC;
+  border-color: #D97706;
+  color: #382519;
 }
 .pay-btn.active { 
-  background: #FFFFFF !important; 
-  border: 1px solid #FFFFFF !important; 
-  color: #1C130E !important; 
+  background: #D97706 !important; 
+  border: 1.5px solid #B45309 !important; 
+  border-bottom: 2px solid #92400E !important;
+  color: #FFFFFF !important; 
   font-weight: 800; 
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 3px 10px rgba(217, 119, 6, 0.28);
 }
 
-/* Resumo e Totais em Bloco Escuro Arredondado (Padrão Ioshi) */
+/* Resumo e Totais em Bloco Limpo & Acolhedor */
 .cart-summary { 
-  background: #1C130E; 
+  background: #FFFFFF; 
   border-radius: 18px; 
   padding: 16px 18px; 
   margin-top: 18px; 
-  border: 1px solid rgba(0, 0, 0, 0.25); 
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border: 1.5px solid #E5DBCB; 
+  box-shadow: 0 4px 14px rgba(70, 40, 20, 0.05);
 }
 .summary-row { 
   display: flex; 
@@ -1231,36 +1238,36 @@ body {
   align-items: center; 
   margin-bottom: 7px; 
   font-size: 0.85rem; 
-  color: #D1D5DB; 
+  color: #786558; 
   font-weight: 500;
 }
 .summary-row span:last-child {
   font-weight: 700;
-  color: #FFFFFF;
+  color: #382519;
 }
 .summary-row.total { 
   margin-top: 12px; 
   padding-top: 12px; 
-  border-top: 1px solid rgba(255, 255, 255, 0.12); 
+  border-top: 1px solid #EADBCC; 
   font-size: 1.05rem; 
   font-weight: 700; 
-  color: #FFFFFF; 
+  color: #382519; 
 }
 .summary-row.total .val { 
-  color: #10B981 !important; 
+  color: #059669 !important; 
   font-size: 1.25rem; 
   font-family: var(--font-heading); 
   font-weight: 800; 
 }
 
-/* Botão Enviar Pedido no WhatsApp (Padrão Ioshi Pill Arrojado) */
+/* Botão Enviar Pedido no WhatsApp (Pill Emboss Esmeralda) */
 .btn-checkout { 
   width: 100%; 
   padding: 15px 22px; 
-  background: #1C130E; 
+  background: linear-gradient(180deg, #10B981 0%, #059669 100%); 
   color: #FFFFFF; 
-  border: 2px solid #1C130E; 
-  border-bottom: 3px solid #0D0A08;
+  border: 1px solid rgba(255, 255, 255, 0.25); 
+  border-bottom: 3px solid #047857; 
   border-radius: 26px; 
   font-family: var(--font-heading); 
   font-weight: 800; 
@@ -1270,25 +1277,25 @@ body {
   align-items: center; 
   justify-content: center; 
   gap: 9px; 
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25); 
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); 
+  box-shadow: 0 4px 0 #047857, 0 8px 20px rgba(16, 185, 129, 0.35); 
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); 
   margin-top: 18px; 
   text-transform: uppercase; 
   letter-spacing: 0.5px; 
 }
 .btn-checkout i {
-  color: #22C55E;
+  color: #FFFFFF;
   width: 18px;
   height: 18px;
 }
 .btn-checkout:hover { 
-  background: #2E2018; 
-  border-color: #2E2018;
+  background: linear-gradient(180deg, #059669 0%, #047857 100%); 
   transform: translateY(-2px); 
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35); 
+  box-shadow: 0 5px 0 #065F46, 0 10px 24px rgba(16, 185, 129, 0.45); 
 }
 .btn-checkout:active {
-  transform: translateY(1px);
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #047857;
 }
 
 /* Floating Onira Proposal Widget (Padrão Ioshi) */

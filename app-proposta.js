@@ -387,7 +387,7 @@ function initSmoothScroll() {
 }
 
 /* ==========================================================================
-   HERO TICKER AUTOMÁTICO — ALTERNA MODELOS SUAVEMENTE
+   HERO CARROSSEL AUTOMÁTICO & INTERATIVO — JORNADA DO CLIENTE BOLOS DA DIDI
    ========================================================================== */
 
 function initHeroTicker() {
@@ -396,33 +396,82 @@ function initHeroTicker() {
     const imgEl = document.getElementById('hero-phone-case-img');
     const viewportEl = document.getElementById('hero-phone-scroll-viewport');
 
-    const casesList = [
-        { key: 'bebidas', domain: 'adegabebidasexpress.com.br', badge: '🍷 Bebidas • ⚡ 0.38s', img: 'assets/screenshots/montecristo_mobile.jpg' },
-        { key: 'delicatessen', domain: 'delicatessenedocesnobres.com.br', badge: '🥐 Delicatessen • ⚡ 0.36s', img: 'assets/screenshots/fafa_mobile.jpg' },
-        { key: 'hamburgueria', domain: 'hamburgueriaburgershop.com.br', badge: '🍔 Burger • ⚡ 0.35s', img: 'assets/screenshots/baitakao_mobile.jpg' },
-        { key: 'pizzaria', domain: 'forneriapizzasartesanais.com.br', badge: '🍕 Forneria & Pizzas • ⚡ 0.39s', img: 'assets/screenshots/pizzaria_mobile.jpg' },
-        { key: 'pastelaria', domain: 'pastelariatradicaocaseira.com.br', badge: '🥟 Pastelarias • ⚡ 0.37s', img: 'assets/screenshots/claem_mobile.jpg' }
+    const heroSlides = [
+        { 
+            key: 'cardapio', 
+            domain: 'bolosdadidi.com.br', 
+            badge: '🍰 1. Cardápio Oficial • 0% Taxa', 
+            img: 'assets/screenshots/didi_mobile_01_cardapio.jpg' 
+        },
+        { 
+            key: 'produto', 
+            domain: 'bolosdadidi.com.br/fornadas', 
+            badge: '🎂 2. Fornadas Caseiras & Bolos Vulcão', 
+            img: 'assets/screenshots/didi_mobile_02_produto.jpg' 
+        },
+        { 
+            key: 'carrinho', 
+            domain: 'bolosdadidi.com.br/carrinho', 
+            badge: '🛒 3. Carrinho Leve & Transparente', 
+            img: 'assets/screenshots/didi_mobile_03_carrinho.jpg' 
+        },
+        { 
+            key: 'checkout', 
+            domain: 'api.whatsapp.com/send', 
+            badge: '💬 4. Comanda Direta no WhatsApp', 
+            img: 'assets/screenshots/didi_mobile_04_checkout.jpg' 
+        }
     ];
 
     let currentIdx = 0;
+    let tickerTimer = null;
     if (!imgEl) return;
 
-    setInterval(() => {
-        currentIdx = (currentIdx + 1) % casesList.length;
-        const item = casesList[currentIdx];
+    function updateDots(idx) {
+        const dots = document.querySelectorAll('#hero-carousel-dots .hero-dot');
+        dots.forEach((dot, i) => {
+            if (i === idx) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+    }
+
+    function showSlide(idx) {
+        currentIdx = idx;
+        const item = heroSlides[currentIdx];
 
         imgEl.style.opacity = '0.35';
-        imgEl.style.transition = 'opacity 0.35s ease';
+        imgEl.style.transition = 'opacity 0.25s ease';
 
         setTimeout(() => {
             imgEl.src = item.img;
-            imgEl.alt = `Canal Próprio - ${item.badge}`;
+            imgEl.alt = `Canal Próprio Bolos da Didi - ${item.badge}`;
             if (urlEl) urlEl.textContent = item.domain;
-            if (badgeEl) badgeEl.textContent = item.badge;
+            if (badgeEl) badgeEl.innerHTML = `<i data-lucide="lock" style="width:11px;height:11px;display:inline-block;vertical-align:middle;margin-right:3px;"></i> ${item.badge}`;
             if (viewportEl) viewportEl.scrollTop = 0;
             imgEl.style.opacity = '1';
-        }, 350);
-    }, 3200);
+            updateDots(currentIdx);
+            if (window.lucide) lucide.createIcons();
+        }, 220);
+    }
+
+    window.setHeroSlide = function(idx) {
+        if (tickerTimer) clearInterval(tickerTimer);
+        showSlide(idx);
+        startInterval();
+    };
+
+    function startInterval() {
+        if (tickerTimer) clearInterval(tickerTimer);
+        tickerTimer = setInterval(() => {
+            const nextIdx = (currentIdx + 1) % heroSlides.length;
+            showSlide(nextIdx);
+        }, 3400);
+    }
+
+    startInterval();
 }
 
 /* ==========================================================================

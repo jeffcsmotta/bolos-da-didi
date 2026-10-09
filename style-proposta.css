@@ -751,6 +751,72 @@ img, svg {
     margin: 10px auto 2px;
 }
 
+/* Controles de Carrossel Mobile da Hero */
+.hero-carousel-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 6px 8px;
+    background: rgba(24, 24, 27, 0.92);
+    border-radius: 14px;
+    margin-top: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hero-dot {
+    background: transparent;
+    border: 1px solid transparent;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 7px;
+    border-radius: 8px;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-dot-indicator {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    transition: all 0.22s ease;
+}
+
+.hero-dot-label {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    transition: color 0.2s ease;
+}
+
+.hero-dot:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.hero-dot:hover .hero-dot-indicator {
+    background: rgba(255, 199, 0, 0.6);
+}
+
+.hero-dot.active {
+    background: rgba(255, 199, 0, 0.12);
+    border-color: rgba(255, 199, 0, 0.3);
+}
+
+.hero-dot.active .hero-dot-indicator {
+    background: var(--color-primary);
+    box-shadow: 0 0 6px var(--color-primary);
+    transform: scale(1.2);
+}
+
+.hero-dot.active .hero-dot-label {
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
 /* ==========================================================================
    HERO INTERACTIVE MOCKUP (MICRO-APP)
    ========================================================================== */

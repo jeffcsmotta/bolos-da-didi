@@ -118,26 +118,47 @@
                     </div>
                 </div>
 
-                <!-- Coluna Direita: Mockup Flutuante com Scroll Real do Site da Cliente (LIVE IFRAME) -->
+                <!-- Coluna Direita: Mockup Flutuante com Carrossel Automático & Interativo do Site da Cliente -->
                 <div class="hero-visual">
                     <div class="phone-frame-mockup">
                         <div class="phone-glass-bezel">
                             <div class="phone-top-speaker"></div>
                             
-                            <!-- Barra de endereço do navegador móvel com Ticker de Nicho -->
+                            <!-- Barra de endereço do navegador móvel com Ticker Dinâmico -->
                             <div class="phone-browser-bar">
                                 <span class="browser-secure-dot"></span>
                                 <span class="browser-url" id="hero-browser-url">bolosdadidi.com.br</span>
-                                <span class="browser-speed-badge" id="hero-ticker-badge">🎂 Bolos Caseiros &amp; Afetivos • ⚡ 0.35s</span>
+                                <span class="browser-speed-badge" id="hero-ticker-badge"><i data-lucide="lock" style="width:11px;height:11px;display:inline-block;vertical-align:middle;margin-right:3px;"></i> 🍰 1. Cardápio Oficial • 0% Taxa</span>
                             </div>
 
-                            <!-- Viewport da tela real desenhada com scroll interno nativo (SITE DA CLIENTE AO VIVO) -->
-                            <div class="phone-screen-viewport phone-screenshot-viewport" id="hero-phone-scroll-viewport" style="overflow:hidden; padding:0; background:#FAF6F0;">
-                                <iframe src="index.html" 
-                                        title="Cardápio Oficial - Bolos da Didi" 
-                                        class="viewport-live-iframe" 
-                                        style="width: 100%; height: 100%; border: none; border-radius: 0 0 24px 24px; background: #FAF6F0; display: block;" 
-                                        loading="eager"></iframe>
+                            <!-- Viewport da tela real em Carrossel Mobile -->
+                            <div class="phone-screen-viewport phone-screenshot-viewport" id="hero-phone-scroll-viewport">
+                                <img src="assets/screenshots/didi_mobile_01_cardapio.jpg" 
+                                     alt="Canal Próprio Oficial Bolos da Didi" 
+                                     class="viewport-screenshot-img hero-ticker-img" 
+                                     id="hero-phone-case-img"
+                                     style="object-fit: cover; object-position: top center; width: 100%; height: 100%;"
+                                     loading="eager" />
+                            </div>
+
+                            <!-- Controles Interativos do Carrossel (4 Etapas do Pedido) -->
+                            <div class="hero-carousel-controls" id="hero-carousel-dots">
+                                <button type="button" class="hero-dot active" onclick="window.setHeroSlide(0)" title="1. Cardápio Oficial" aria-label="1. Cardápio Oficial">
+                                    <span class="hero-dot-indicator"></span>
+                                    <span class="hero-dot-label">1. Vitrine</span>
+                                </button>
+                                <button type="button" class="hero-dot" onclick="window.setHeroSlide(1)" title="2. Fornadas & Sabores" aria-label="2. Fornadas & Sabores">
+                                    <span class="hero-dot-indicator"></span>
+                                    <span class="hero-dot-label">2. Fornadas</span>
+                                </button>
+                                <button type="button" class="hero-dot" onclick="window.setHeroSlide(2)" title="3. Carrinho Leve & Transparente" aria-label="3. Carrinho Leve & Transparente">
+                                    <span class="hero-dot-indicator"></span>
+                                    <span class="hero-dot-label">3. Carrinho</span>
+                                </button>
+                                <button type="button" class="hero-dot" onclick="window.setHeroSlide(3)" title="4. Comanda no WhatsApp" aria-label="4. Comanda no WhatsApp">
+                                    <span class="hero-dot-indicator"></span>
+                                    <span class="hero-dot-label">4. WhatsApp</span>
+                                </button>
                             </div>
 
                             <div class="phone-bottom-bar"></div>
