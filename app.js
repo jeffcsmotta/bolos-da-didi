@@ -366,12 +366,33 @@ window.closeCart = function() {
   document.body.style.overflow = '';
 };
 
-window.clearCart = function() {
+// Modal de Confirmação para Limpar Pedido
+window.openClearModal = function() {
   if (cart.length === 0) return;
+  const modal = document.getElementById('modal-clear-cart');
+  if (modal) {
+    modal.style.display = 'flex';
+    if (window.lucide) lucide.createIcons();
+  }
+};
+
+window.closeClearModal = function() {
+  const modal = document.getElementById('modal-clear-cart');
+  if (modal) {
+    modal.style.display = 'none';
+  }
+};
+
+window.confirmClearCart = function() {
   cart = [];
   saveCart();
   updateCartUI();
+  window.closeClearModal();
   showToast('Pedido limpo com sucesso.');
+};
+
+window.clearCart = function() {
+  window.openClearModal();
 };
 
 window.changeQuantity = function(idx, delta) {
@@ -584,7 +605,12 @@ window.checkoutWhatsApp = function() {
 // Listeners de Teclado
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
-    window.closeCart();
+    const modal = document.getElementById('modal-clear-cart');
+    if (modal && modal.style.display === 'flex') {
+      window.closeClearModal();
+    } else {
+      window.closeCart();
+    }
   }
 });
 

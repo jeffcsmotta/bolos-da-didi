@@ -28,13 +28,31 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <link rel="stylesheet" href="style.css?v=20261022-v4">
+  <link rel="stylesheet" href="style.css?v=20261022-v5">
 </head>
 <body class="theme-onirafly">
 
   <!-- ==========================================================================
-       HEADER PRINCIPAL — ULTRA-DESPOLUÍDO (APENAS MARCA & PEDIDO)
-       Top announcement bar removida; botão proposta removido
+       BARRA DISCRETA OPERACIONAL — STATUS & ENDEREÇO FUNDIDOS ACIMA DO CABEÇALHO
+       ========================================================================== -->
+  <aside class="top-announcement-bar" id="top-announcement-bar">
+    <div class="container top-bar-container">
+      <div class="top-bar-merged-badge">
+        <span class="top-status-indicator">
+          <span class="status-dot-pulse"></span>
+          <strong>Aberto Hoje:</strong> 09h às 18h
+        </span>
+        <span class="top-bar-divider">•</span>
+        <span class="top-address-indicator">
+          <i data-lucide="map-pin" style="width:12px;height:12px;"></i>
+          <span>Av. Liberdade, 2077 — Santa Isabel, Viamão/RS</span>
+        </span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==========================================================================
+       HEADER PRINCIPAL — MARCA & AÇÕES COM ÍCONES NO MOBILE
        ========================================================================== -->
   <header class="header-main" id="header">
     <div class="container header-container">
@@ -47,16 +65,16 @@
         </div>
       </a>
 
-      <!-- Lado Direito: Apenas Lixeira Outline e Botão Meu Pedido -->
+      <!-- Lado Direito: Lixeira Outline e Botão Meu Pedido (Compacto no Mobile) -->
       <div class="header-actions">
         <!-- Botão Lixeira Outline (Visível quando há itens no carrinho) -->
-        <button type="button" class="btn-header-trash" id="cart-clear-header" onclick="window.clearCart()" title="Limpar Pedido" aria-label="Limpar Pedido" style="display:none;">
-          <i data-lucide="trash-2" style="width:16px;height:16px;"></i>
+        <button type="button" class="btn-header-trash" id="cart-clear-header" onclick="window.openClearModal()" title="Limpar Pedido" aria-label="Limpar Pedido" style="display:none;">
+          <i data-lucide="trash-2" style="width:17px;height:17px;"></i>
         </button>
 
-        <!-- Botão Carrinho ("Meu Pedido" Emboss) -->
+        <!-- Botão Carrinho ("Meu Pedido" no Desktop / Ícone com Contador no Mobile) -->
         <button type="button" class="btn-cart-nav cart-toggle-btn" id="cart-toggle" onclick="window.openCart()" aria-label="Abrir Pedido">
-          <i data-lucide="shopping-bag" style="width:17px;height:17px;"></i>
+          <i data-lucide="shopping-bag" class="cart-nav-icon" style="width:18px;height:18px;"></i>
           <span class="cart-btn-label">Meu Pedido</span>
           <span class="cart-total-header" id="cart-total-header" style="display:none;">R$ 0,00</span>
           <span class="cart-count-badge cart-count" id="cart-count" style="display:none;">0</span>
@@ -66,23 +84,10 @@
   </header>
 
   <!-- ==========================================================================
-       BARRA DE BUSCA COM BADGES OPERACIONAIS LOGO ACIMA
-       Endereço e status integrados diretamente no fluxo do cardápio
+       BARRA DE BUSCA & CARROSSEL DE CATEGORIAS (CLEAN & ESPAÇOSO)
        ========================================================================== -->
   <section class="catalog-filters-section">
     <div class="container">
-      <!-- Badges Operacionais Acima da Busca -->
-      <div class="search-top-badges">
-        <div class="status-badge-inline" id="status-badge">
-          <span class="status-dot-pulse"></span>
-          <span>Aberto Hoje • 09h às 18h</span>
-        </div>
-        <div class="address-badge-inline">
-          <i data-lucide="map-pin" style="width:13px;height:13px;color:#D97706;"></i>
-          <span>Av. Liberdade, 2077 — Santa Isabel, Viamão/RS</span>
-        </div>
-      </div>
-
       <!-- Input de Busca Rápida -->
       <div class="search-input-wrap">
         <i data-lucide="search" class="search-icon"></i>
@@ -284,7 +289,7 @@
       </button>
       <div class="cart-header-right">
         <span class="cart-header-title">Meu Pedido Didi</span>
-        <button type="button" class="cart-trash-btn" id="cart-clear-drawer" onclick="window.clearCart()" title="Limpar pedido" aria-label="Limpar pedido">
+        <button type="button" class="cart-trash-btn" id="cart-clear-drawer" onclick="window.openClearModal()" title="Limpar pedido" aria-label="Limpar pedido">
           <i data-lucide="trash-2"></i>
         </button>
       </div>
@@ -383,7 +388,24 @@
   <!-- Toast Notification -->
   <div class="toast-notification" id="toast-notification"></div>
 
-  <script src="app.js?v=20261022-v4"></script>
+  <!-- MODAL DE CONFIRMAÇÃO — LIMPAR PEDIDO -->
+  <div class="modal-backdrop" id="modal-clear-cart" style="display:none;" onclick="if(event.target === this) window.closeClearModal()">
+    <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-clear-title">
+      <div class="modal-icon-header">
+        <div class="modal-icon-circle">
+          <i data-lucide="trash-2" style="width:26px;height:26px;color:#EF4444;"></i>
+        </div>
+      </div>
+      <h3 class="modal-title" id="modal-clear-title">Limpar seu pedido?</h3>
+      <p class="modal-description">Você está prestes a remover todos os bolos e sobremesas selecionados do carrinho. Deseja continuar?</p>
+      <div class="modal-actions-row">
+        <button type="button" class="btn-modal-cancel" onclick="window.closeClearModal()">Cancelar</button>
+        <button type="button" class="btn-modal-confirm" onclick="window.confirmClearCart()">Sim, limpar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js?v=20261022-v5"></script>
   <script>
     if (window.lucide) {
       lucide.createIcons();
