@@ -96,13 +96,20 @@ body {
   top: 0;
   z-index: 100;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.14);
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+  will-change: transform;
+}
+
+.header-main.header-hidden {
+  transform: translateY(-100%);
+  box-shadow: none;
 }
 
 .header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 11px 18px;
+  padding: 10px 18px;
   gap: 12px;
 }
 
@@ -111,13 +118,46 @@ body {
   align-items: center;
   text-decoration: none;
   flex-shrink: 0;
+  gap: 11px;
 }
 
 .brand-logo-img {
-  height: 48px;
-  width: auto;
-  max-width: 240px;
-  object-fit: contain;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.brand-link:hover .brand-logo-img {
+  transform: scale(1.05);
+}
+
+.brand-identity {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1.15;
+}
+
+.brand-name {
+  font-family: var(--font-heading);
+  font-size: 1.16rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.brand-tagline {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #FCD34D;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
 }
 
 .header-actions {
@@ -212,6 +252,11 @@ body {
   top: 71px;
   z-index: 90;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+  transition: top 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.header-is-hidden .catalog-filters-section {
+  top: 0 !important;
 }
 
 .search-top-badges {
@@ -1469,9 +1514,21 @@ body {
    RESPONSIVIDADE MOBILE FIRST
    ========================================================================== */
 @media (max-width: 768px) {
+  .header-container {
+    padding: 8px 14px;
+  }
+  .brand-link {
+    gap: 9px;
+  }
   .brand-logo-img {
-    height: 40px;
-    max-width: 180px;
+    height: 44px;
+    width: 44px;
+  }
+  .brand-name {
+    font-size: 1.05rem;
+  }
+  .brand-tagline {
+    font-size: 0.65rem;
   }
   .search-top-badges {
     flex-direction: column;
@@ -1479,7 +1536,7 @@ body {
     gap: 6px;
   }
   .catalog-filters-section {
-    top: 62px;
+    top: 61px;
   }
   .products-grid {
     grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));

@@ -524,4 +524,35 @@ function initMomentCards() {
     });
 }
 
+// Auto-hide Cabeçalho Inteligente no Scroll (Recolhe ao Rolar para Baixo e Revela ao Subir)
+(function initProposalHeaderScroll() {
+    const header = document.querySelector('.site-header');
+    if (!header) return;
+
+    let lastScrollY = window.scrollY;
+    let isTicking = false;
+    const threshold = 8;
+
+    window.addEventListener('scroll', () => {
+        if (!isTicking) {
+            window.requestAnimationFrame(() => {
+                const currentScrollY = window.scrollY;
+                const delta = currentScrollY - lastScrollY;
+
+                if (currentScrollY <= 40) {
+                    header.classList.remove('header-hidden');
+                } else if (delta > threshold && currentScrollY > 80) {
+                    header.classList.add('header-hidden');
+                } else if (delta < -threshold) {
+                    header.classList.remove('header-hidden');
+                }
+
+                lastScrollY = currentScrollY;
+                isTicking = false;
+            });
+            isTicking = true;
+        }
+    }, { passive: true });
+})();
+
 

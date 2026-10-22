@@ -613,3 +613,37 @@ function showToast(msg) {
     toast.classList.remove('active');
   }, 2600);
 }
+
+// Auto-hide Cabeçalho Inteligente no Mobile (Recolhe ao Rolar para Baixo e Revela ao Subir)
+(function initHeaderScroll() {
+  const header = document.getElementById('header');
+  if (!header) return;
+
+  let lastScrollY = window.scrollY;
+  let isTicking = false;
+  const threshold = 8;
+
+  window.addEventListener('scroll', () => {
+    if (!isTicking) {
+      window.requestAnimationFrame(() => {
+        const currentScrollY = window.scrollY;
+        const delta = currentScrollY - lastScrollY;
+
+        if (currentScrollY <= 30) {
+          header.classList.remove('header-hidden');
+          document.body.classList.remove('header-is-hidden');
+        } else if (delta > threshold && currentScrollY > 70) {
+          header.classList.add('header-hidden');
+          document.body.classList.add('header-is-hidden');
+        } else if (delta < -threshold) {
+          header.classList.remove('header-hidden');
+          document.body.classList.remove('header-is-hidden');
+        }
+
+        lastScrollY = currentScrollY;
+        isTicking = false;
+      });
+      isTicking = true;
+    }
+  }, { passive: true });
+})();

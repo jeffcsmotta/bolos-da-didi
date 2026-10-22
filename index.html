@@ -15,6 +15,11 @@
   <meta property="og:image" content="assets/bolo_vulcao_chocolate.jpg">
   <meta property="og:locale" content="pt_BR">
 
+  <!-- Favicon & Touch Icon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-didi.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-didi-64.png">
+  <link rel="apple-touch-icon" href="assets/logo_didi_oficial.png">
+
   <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,7 +28,7 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <link rel="stylesheet" href="style.css?v=20261009-v2">
+  <link rel="stylesheet" href="style.css?v=20261021-v3">
 </head>
 <body class="theme-onirafly">
 
@@ -33,9 +38,13 @@
        ========================================================================== -->
   <header class="header-main" id="header">
     <div class="container header-container">
-      <!-- Lado Esquerdo: Logo da Marca -->
+      <!-- Lado Esquerdo: Logo da Marca Oficial Bolos da Didi -->
       <a href="index.html" class="brand-link" aria-label="Bolos da Didi Página Inicial">
-        <img src="assets/logo-white.svg" alt="Bolos da Didi Logo Oficial" class="brand-logo-img">
+        <img src="assets/logo_didi_oficial.png" alt="Bolos da Didi Logo Oficial" class="brand-logo-img">
+        <div class="brand-identity">
+          <span class="brand-name">Bolos da Didi</span>
+          <span class="brand-tagline">Receita de família</span>
+        </div>
       </a>
 
       <!-- Lado Direito: Apenas Lixeira Outline e Botão Meu Pedido -->
@@ -368,7 +377,7 @@
   <!-- Toast Notification -->
   <div class="toast-notification" id="toast-notification"></div>
 
-  <script src="app.js?v=20261009-v2"></script>
+  <script src="app.js?v=20261021-v3"></script>
   <script>
     if (window.lucide) {
       lucide.createIcons();
