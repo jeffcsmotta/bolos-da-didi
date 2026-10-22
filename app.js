@@ -1,7 +1,7 @@
 /**
  * Bolos da Didi — Viamão - RS
  * Cardápio Digital & Checkout Oficial Onira.fly Direto no WhatsApp
- * WhatsApp Oficial: (51) 99794-6693
+ * WhatsApp Oficial: (51) 9794-6693
  * Endereço: Av. Liberdade, 2077 - Santa Isabel, Viamão/RS
  * Powered by Onira Labs
  */
@@ -461,6 +461,7 @@ function updateCartUI() {
   if (floatBar) {
     floatBar.classList.toggle('active', count > 0);
   }
+  document.body.classList.toggle('has-cart-bar', count > 0);
 
   const itemsContainer = document.getElementById('cart-items-container');
   const summaryBox = document.getElementById('cart-summary-box');
@@ -614,30 +615,42 @@ function showToast(msg) {
   }, 2600);
 }
 
-// Auto-hide Cabeçalho Inteligente no Mobile (Recolhe ao Rolar para Baixo e Revela ao Subir)
-(function initHeaderScroll() {
+// Auto-hide Cabeçalho Inteligente & Opacidade Dinâmica no Scroll
+(function initHeaderAndWidgetScroll() {
   const header = document.getElementById('header');
-  if (!header) return;
-
+  const oniraCta = document.getElementById('onira-cta');
+  
   let lastScrollY = window.scrollY;
   let isTicking = false;
+  let scrollTimeout = null;
   const threshold = 8;
 
   window.addEventListener('scroll', () => {
+    // 4. Widget de proposta perde opacidade durante o scroll
+    if (oniraCta) {
+      oniraCta.classList.add('scrolling');
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        oniraCta.classList.remove('scrolling');
+      }, 220);
+    }
+
     if (!isTicking) {
       window.requestAnimationFrame(() => {
         const currentScrollY = window.scrollY;
         const delta = currentScrollY - lastScrollY;
 
-        if (currentScrollY <= 30) {
-          header.classList.remove('header-hidden');
-          document.body.classList.remove('header-is-hidden');
-        } else if (delta > threshold && currentScrollY > 70) {
-          header.classList.add('header-hidden');
-          document.body.classList.add('header-is-hidden');
-        } else if (delta < -threshold) {
-          header.classList.remove('header-hidden');
-          document.body.classList.remove('header-is-hidden');
+        if (header) {
+          if (currentScrollY <= 30) {
+            header.classList.remove('header-hidden');
+            document.body.classList.remove('header-is-hidden');
+          } else if (delta > threshold && currentScrollY > 70) {
+            header.classList.add('header-hidden');
+            document.body.classList.add('header-is-hidden');
+          } else if (delta < -threshold) {
+            header.classList.remove('header-hidden');
+            document.body.classList.remove('header-is-hidden');
+          }
         }
 
         lastScrollY = currentScrollY;

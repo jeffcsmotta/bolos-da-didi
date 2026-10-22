@@ -28,7 +28,7 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <link rel="stylesheet" href="style.css?v=20261021-v3">
+  <link rel="stylesheet" href="style.css?v=20261022-v4">
 </head>
 <body class="theme-onirafly">
 
@@ -206,7 +206,13 @@
     <div class="container footer-container">
       <!-- Coluna 1: Marca & Endereço -->
       <div class="footer-col footer-left">
-        <img src="assets/logo-white.svg" alt="Bolos da Didi" class="footer-logo">
+        <div class="footer-brand-box">
+          <img src="assets/logo_didi_oficial.png" alt="Bolos da Didi Logo Oficial" class="footer-logo-img">
+          <div class="footer-brand-identity">
+            <span class="footer-brand-name">Bolos da Didi</span>
+            <span class="footer-brand-tagline">Receita de família</span>
+          </div>
+        </div>
         <p class="footer-about">Bolaria artesanal de Viamão focada em receitas tradicionais de família, bolos vulcão de colher e confeitaria afetiva.</p>
         <p class="footer-address">
           <i data-lucide="map-pin" style="width:15px;height:15px;display:inline-block;vertical-align:middle;margin-right:5px;color:#FCD34D;"></i>
@@ -221,7 +227,7 @@
           <li>
             <a href="https://wa.me/555197946693" target="_blank" rel="noopener noreferrer" class="footer-link-item">
               <i data-lucide="phone" style="width:16px;height:16px;color:#10B981;"></i>
-              <span><strong>WhatsApp Pedidos:</strong> (51) 99794-6693</span>
+              <span><strong>WhatsApp Pedidos:</strong> (51) 9794-6693</span>
             </a>
           </li>
           <li>
@@ -352,7 +358,7 @@
         <strong>Ver Proposta Comercial</strong>
         <small>0% comissão • Onira.fly</small>
       </span>
-      <i data-lucide="chevron-right" style="width:16px;height:16px;color:#F59E0B;"></i>
+      <i data-lucide="chevron-right" class="cta-chevron" style="width:16px;height:16px;"></i>
     </a>
   </div>
 
@@ -377,7 +383,7 @@
   <!-- Toast Notification -->
   <div class="toast-notification" id="toast-notification"></div>
 
-  <script src="app.js?v=20261021-v3"></script>
+  <script src="app.js?v=20261022-v4"></script>
   <script>
     if (window.lucide) {
       lucide.createIcons();

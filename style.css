@@ -122,8 +122,8 @@ body {
 }
 
 .brand-logo-img {
-  height: 50px;
-  width: 50px;
+  height: 60px;
+  width: 60px;
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
@@ -144,7 +144,7 @@ body {
 
 .brand-name {
   font-family: var(--font-heading);
-  font-size: 1.16rem;
+  font-size: 1.25rem;
   font-weight: 800;
   color: #FFFFFF;
   letter-spacing: -0.02em;
@@ -153,7 +153,7 @@ body {
 
 .brand-tagline {
   font-family: var(--font-body);
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   font-weight: 600;
   color: #FCD34D;
   letter-spacing: 0.03em;
@@ -252,11 +252,13 @@ body {
   top: 71px;
   z-index: 90;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
-  transition: top 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: top 0.32s cubic-bezier(0.16, 1, 0.3, 1), padding 0.25s ease;
 }
 
 body.header-is-hidden .catalog-filters-section {
   top: 0 !important;
+  padding: 6px 0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
 .search-top-badges {
@@ -265,6 +267,17 @@ body.header-is-hidden .catalog-filters-section {
   gap: 10px;
   flex-wrap: wrap;
   margin-bottom: 10px;
+  transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.22s ease, margin 0.28s ease, transform 0.28s ease;
+  overflow: hidden;
+  max-height: 60px;
+}
+
+body.header-is-hidden .search-top-badges {
+  max-height: 0;
+  opacity: 0;
+  margin-bottom: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
 }
 
 .status-badge-inline {
@@ -798,10 +811,42 @@ body.header-is-hidden .catalog-filters-section {
   gap: 32px;
 }
 
-.footer-logo {
-  height: 46px;
-  width: auto;
-  margin-bottom: 14px;
+.footer-brand-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.footer-logo-img {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  flex-shrink: 0;
+}
+
+.footer-brand-identity {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.footer-brand-name {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+}
+
+.footer-brand-tagline {
+  font-family: var(--font-body);
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: #FCD34D;
+  letter-spacing: 0.03em;
 }
 
 .footer-about {
@@ -1343,55 +1388,88 @@ body.header-is-hidden .catalog-filters-section {
   box-shadow: 0 1px 0 #047857;
 }
 
-/* Floating Onira Proposal Widget (Padrão Ioshi) */
+/* Floating Onira Proposal Widget (Azul Onira Oficial) */
 .onira-cta {
   position: fixed;
   bottom: 24px;
   left: 24px;
-  z-index: 100;
+  z-index: 120;
   display: flex;
   align-items: center;
+  transition: opacity 0.25s ease, transform 0.25s ease, bottom 0.25s ease;
 }
+
+.onira-cta.scrolling {
+  opacity: 0.25;
+  pointer-events: none;
+}
+
 .onira-cta-link {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: #1C130E;
-  border: 1px solid rgba(245, 158, 11, 0.4);
+  background: #09192E; /* Azul Onira Escuro Oficial */
+  border: 1px solid rgba(14, 116, 244, 0.6);
   padding: 8px 14px 8px 8px;
   border-radius: 30px;
   text-decoration: none;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 8px 24px rgba(10, 102, 194, 0.35), 0 2px 6px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
 }
+
 .onira-cta-link:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 12px 28px rgba(10, 102, 194, 0.5);
+  background: #0C213D;
 }
+
 .onira-cta-avatar {
   width: 38px;
   height: 38px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #F59E0B;
+  border: 2px solid #0A66C2;
 }
+
 .onira-cta-text {
   display: flex;
   flex-direction: column;
 }
+
 .onira-cta-text strong {
   font-size: 0.8rem;
   color: #FFFFFF;
   font-family: var(--font-heading);
 }
+
 .onira-cta-text small {
   font-size: 0.68rem;
-  color: #FCD34D;
+  color: #38BDF8; /* Ciano azul claro */
+  font-weight: 700;
 }
+
+.onira-cta .cta-chevron {
+  color: #38BDF8;
+}
+
 @media (max-width: 768px) {
   .onira-cta {
-    bottom: 80px;
-    left: 16px;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: calc(100vw - 32px);
+  }
+
+  .onira-cta.scrolling {
+    transform: translateX(-50%) scale(0.96);
+    opacity: 0.25;
+  }
+
+  body.has-cart-bar .onira-cta,
+  body:has(#cart-floating-bar.active) .onira-cta {
+    bottom: 78px;
   }
 }
 
@@ -1521,19 +1599,27 @@ body.header-is-hidden .catalog-filters-section {
     gap: 9px;
   }
   .brand-logo-img {
-    height: 44px;
-    width: 44px;
+    height: 53px;
+    width: 53px;
   }
   .brand-name {
-    font-size: 1.05rem;
+    font-size: 1.10rem;
   }
   .brand-tagline {
-    font-size: 0.65rem;
+    font-size: 0.68rem;
   }
   .search-top-badges {
     flex-direction: column;
     align-items: flex-start;
     gap: 6px;
+  }
+  body.header-is-hidden .search-input-wrap {
+    margin-bottom: 6px;
+  }
+  body.header-is-hidden .search-input-field {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-size: 0.82rem;
   }
   .catalog-filters-section {
     top: 61px;
